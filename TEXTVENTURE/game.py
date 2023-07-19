@@ -330,50 +330,39 @@ All the interactions with the game are listed here.
 def player_interact(action):
     if ZONE_MAP[player.location]["SOLVED"]:
         print("\nYou visited this place earlier. Move further!\n")
-        return
-
-    else:
-        if action == 'inspect':
-            print("\n" + ZONE_MAP[player.location]["DESCRIPTION"])
-            return
-
-        elif action == 'examine' or action == 'interact':
-            print("\n" + ZONE_MAP[player.location]["EXAMINATION"])
-            return
-
-        elif action == 'look':
+    elif action == 'inspect':
+        print("\n" + ZONE_MAP[player.location]["DESCRIPTION"])
+    elif action in ['examine', 'interact']:
+        print("\n" + ZONE_MAP[player.location]["EXAMINATION"])
+    elif action == 'look':
             # Display effects if there are any.
-            if len(player.effects) > 0:
-                print("\nYou have entitled with the following effects:")
-                for effect in player.effects:
-                    sys.stdout.write("\t" + effect + "\n")
-                    sys.stdout.flush()
-                    time.sleep(0.5)
+        if len(player.effects) > 0:
+            print("\nYou have entitled with the following effects:")
+            for effect in player.effects:
+                sys.stdout.write("\t" + effect + "\n")
+                sys.stdout.flush()
+                time.sleep(0.5)
 
-                return
+        else: 
+            print("\nYou have no effects.\n")
+    else:
+        print("\nI don't understand that command.\nPlease enter a valid command. ⚠️\n")
 
-            else: 
-                print("\nYou have no effects.\n")
-                return
-
-        else:
-            print("\nI don't understand that command.\nPlease enter a valid command. ⚠️\n")
-            return
+    return
 
 
 # Movement Handler
 def movement_handler(destination):
     if destination == '':
         print("\nYou cannot go that way.\n")
-        return
-    
     else:
         print("\n" + "You moved to the " + destination + ".")
         player.location = destination
         ZONE_MAP [player.location]["SOLVED"] = True
 
         show_location()
-        return
+
+    return
 
 # Player Movement
 def player_move(myAction):
@@ -407,7 +396,7 @@ def player_move(myAction):
 # Player Location
 def show_location():
     print("\n" + ("#" * (4 + len(player.location))) )
-    print("# " + player.location.upper() + " #")
+    print(f"# {player.location.upper()} #")
     print("# " + ZONE_MAP[player.location]["DESCRIPTION"] + " #")
     print("\n" + ("#" * (4 + len(player.location))) )
 
@@ -438,11 +427,7 @@ If the player has visited all the locations,
 the game will end and the player will be congratulated.
 """
 def ifSolved():
-    count = 0
-
-    for obj in ZONE_MAP:
-        if obj["SOLVED"]: count += 1
-
+    count = sum(1 for obj in ZONE_MAP if obj["SOLVED"])
     if count == len(ZONE_MAP): player.game_over = True
 
 # Main Game Loop
@@ -506,7 +491,7 @@ def setup_game():
                 sys.stdout.write(char)
                 sys.stdout.flush()
                 time.sleep(0.02)
-        
+
         # wait for user to press enter
         print("\nPress any key on the keyboard to continue. ")
         input("\n> ")
@@ -543,17 +528,17 @@ def setup_game():
         player.mp = 0
         player.effects = ['Medieval', 'Colonial', 'Futuristic']
 
-    elif player.trade == 'miner':
-        player.hp = 130
-        player.mp = 0
-        player.effects = ['Staircasing', 'Blast', 'Sea']
-
     elif player.trade == 'fighter':
         player.hp = 150
         player.mp = 50
         player.effects = ['Pillager Power', 'Warden Garden', 'Nether Nomad']
 
-    
+
+    elif player.trade == 'miner':
+        player.hp = 130
+        player.mp = 0
+        player.effects = ['Staircasing', 'Blast', 'Sea']
+
     # Welcoming the player
     O1 = "\nWelcome, " + player.name + "! The " + player.trade.upper() + "\n"
     for char in O1:
@@ -566,7 +551,7 @@ def setup_game():
             sys.stdout.flush()
             time.sleep(0.03)
 
-    O2 = player.username + " is your username" + ".\n"
+    O2 = f"{player.username} is your username" + ".\n"
     for char in O2:
         if char == " ":
             sys.stdout.write(char)
@@ -577,7 +562,7 @@ def setup_game():
             sys.stdout.flush()
             time.sleep(0.03)
 
-    O3 = "Your health is " + str(player.hp) + ".\n"
+    O3 = f"Your health is {str(player.hp)}" + ".\n"
     for char in O3:
         if char == " ":
             sys.stdout.write(char)
@@ -589,7 +574,7 @@ def setup_game():
             time.sleep(0.03)
 
 
-    O4 = "Your magic points are " + str(player.mp) + "."
+    O4 = f"Your magic points are {str(player.mp)}."
     for char in O4:
         if char == " ":
             sys.stdout.write(char)

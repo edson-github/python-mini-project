@@ -39,11 +39,7 @@ answer = input(">")
 
 if answer == "1":
   score += random.randint(10,20)
-if answer == "2":
-  score += random.randint(5,10)
-else:
-  score += 3
-  
+score += random.randint(5,10) if answer == "2" else 3
 print("")
 
 # ---- question 2 ----
@@ -56,11 +52,7 @@ answer = input(">")
 
 if answer == "2":
   score += random.randint(10,20)
-if answer == "4":
-  score += random.randint(5,10)
-else:
-  score += 3
-
+score += random.randint(5,10) if answer == "4" else 3
 print("")
 
 # ---- question 3 ----
@@ -73,11 +65,7 @@ answer = input(">")
 
 if answer == "2":
   score += random.randint(10,20)
-if answer == "1":
-  score += random.randint(5,10)
-else:
-  score += 3
-
+score += random.randint(5,10) if answer == "1" else 3
 print("")
 
 # ---- question 4 ----
@@ -90,11 +78,7 @@ answer = input(">")
 
 if answer == "1":
   score += random.randint(10,20)
-if answer == "3":
-  score += random.randint(5,10)
-else:
-  score += 3
-  
+score += random.randint(5,10) if answer == "3" else 3
 print("")
 
 # ---- question 5 ----
@@ -107,11 +91,7 @@ answer = input(">")
 
 if answer == "1":
   score += random.randint(10,20)
-if answer == "4":
-  score += random.randint(5,10)
-else:
-  score += 3
-  
+score += random.randint(5,10) if answer == "4" else 3
 print("")
 
 # ---- question 6 ----
@@ -124,11 +104,7 @@ answer = input(">")
 
 if answer == "2":
   score += random.randint(10,20)
-if answer == "1":
-  score += random.randint(5,10)
-else:
-  score += 3
-  
+score += random.randint(5,10) if answer == "1" else 3
 print("")
 
 # ---- question 7 ----
@@ -141,11 +117,7 @@ answer = input(">")
 
 if answer == "2":
   score += random.randint(10,20)
-if answer == "3":
-  score += random.randint(5,10)
-else:
-  score += 3
-
+score += random.randint(5,10) if answer == "3" else 3
 print("")
 
 # ---- question 8 ----
@@ -158,11 +130,7 @@ answer = input(">")
 
 if answer == "3":
   score += random.randint(10,20)
-if answer == "4":
-  score += random.randint(5,10)
-else:
-  score += 3  
-
+score += random.randint(5,10) if answer == "4" else 3
 print("")
 
 # ---- question 9 ----
@@ -175,11 +143,7 @@ answer = input(">")
 
 if answer == "1":
   score += random.randint(10,20)
-if answer == "2":
-  score += random.randint(5,10)
-else:
-  score += 3  
-
+score += random.randint(5,10) if answer == "2" else 3
 print("")
 
 # ---- question 10 ----
@@ -192,16 +156,12 @@ answer = input(">")
 
 if answer == "3":
   score += random.randint(10,20)
-if answer == "4":
-  score += random.randint(5,10)
-else:
-  score += 3  
-
+score += random.randint(5,10) if answer == "4" else 3
 print("")
 
 # ---- end ----
 print("The results are in!")
-print("You scored a {}%".format(score))
+print(f"You scored a {score}%")
 
 if score == (0,5):
 		print('You would be one of the first peopple to die in the apocalypse.\nYou panic at the sight of a zombie and have no survival skills, getting eaten within an hour.\nPathetic.')

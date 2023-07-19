@@ -7,18 +7,18 @@ def translate(word):
     if word in data:
         return data[word]
     elif word.title() in data:
-        return data[word.title()] 
+        return data[word.title()]
     elif word.upper() in data:
         return data[word.upper()]
     elif len(get_close_matches(word, data.keys())) > 0:
-        print("did you mean %s instead" %get_close_matches(word, data.keys())[0])
+        print(f"did you mean {get_close_matches(word, data.keys())[0]} instead")
         decide = input("press y for yes or n for no: ")
         if decide == "y":
             return data[get_close_matches(word, data.keys())[0]]
         elif decide == "n":
             return("pugger your paw steps on working keys ")
         else:
-            return("You have entered wrong input please enter just y or n")    
+            return("You have entered wrong input please enter just y or n")
     else:
         print("You have entered wrong keys. Try again")
         

@@ -74,7 +74,7 @@ def delete(id):
     conn.execute('DELETE FROM products WHERE id = ?', (id,))
     conn.commit()
     conn.close()
-    flash('"{}" was successfully deleted!'.format(products['title']))
+    flash(f""""{products['title']}" was successfully deleted!""")
     return redirect(url_for('index'))
 
 

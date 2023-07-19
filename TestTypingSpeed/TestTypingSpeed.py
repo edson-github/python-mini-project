@@ -36,12 +36,11 @@ def typing_speed():
 
 
 if __name__ == "__main__":
-    print("Let's Start")   
+    print("Let's Start")
     typing_speed()
 
-    while True :  
-        if input("Do you want to try again? (y/n): ")=="y":
-            print("\n")
-            typing_speed()
-        else:
-            break    
+    while True:  
+        if input("Do you want to try again? (y/n): ") != "y":
+            break
+        print("\n")
+        typing_speed()    

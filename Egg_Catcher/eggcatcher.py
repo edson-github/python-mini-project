@@ -30,10 +30,24 @@ catcher_start_y2 = catcher_start_y + catcher_height
 catcher = c.create_arc(catcher_start_x ,catcher_start_y ,catcher_start_x2,catcher_start_y2 , start=200 , extent = 140 , style='arc' , outline=catcher_color , width=3)
 
 score = 0
-score_text = c.create_text(10,10,anchor='nw' , font=('Arial',18,'bold'),fill='darkblue',text='Score : ' + str(score))
+score_text = c.create_text(
+    10,
+    10,
+    anchor='nw',
+    font=('Arial', 18, 'bold'),
+    fill='darkblue',
+    text=f'Score : {score}',
+)
 
 lives_remaning = 3
-lives_text = c.create_text(canvas_width-10,10,anchor='ne' , font=('Arial',18,'bold'),fill='darkblue',text='Lives : ' + str(lives_remaning))
+lives_text = c.create_text(
+    canvas_width - 10,
+    10,
+    anchor='ne',
+    font=('Arial', 18, 'bold'),
+    fill='darkblue',
+    text=f'Lives : {lives_remaning}',
+)
 
 eggs = []
 
@@ -57,13 +71,13 @@ def egg_dropped(egg):
     c.delete(egg)
     lose_a_life()
     if lives_remaning == 0:
-        messagebox.showinfo('GAME OVER!' , 'Final Score : ' + str(score))
+        messagebox.showinfo('GAME OVER!', f'Final Score : {str(score)}')
         win.destroy()
 
 def lose_a_life():
     global lives_remaning
     lives_remaning -= 1
-    c.itemconfigure(lives_text , text='Lives : ' + str(lives_remaning))
+    c.itemconfigure(lives_text, text=f'Lives : {lives_remaning}')
 
 def catch_check():
     (catcher_x,catcher_y,catcher_x2,catcher_y2) = c.coords(catcher)
@@ -80,7 +94,7 @@ def increase_score(points):
     score += points
     egg_speed = int(egg_speed * difficulty_factor)
     egg_interval = int(egg_interval * difficulty_factor)
-    c.itemconfigure(score_text , text='Score : ' + str(score))
+    c.itemconfigure(score_text, text=f'Score : {str(score)}')
 
 def move_left(event):
     (x1,y1,x2,y2) = c.coords(catcher)

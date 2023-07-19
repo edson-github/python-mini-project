@@ -8,10 +8,10 @@ def execute_shell_command(command):
         out, err = proc.communicate()
         return_code = proc.returncode
         if err:
-            print(str(err))
+            print(err)
         return out, return_code
     except Exception as err:
-        print("Exception Occurred while executing module : %s", str(err))
+        print("Exception Occurred while executing module : %s", err)
         return 105
 
 if __name__ == '__main__':

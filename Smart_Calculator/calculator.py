@@ -17,7 +17,7 @@ def mod(a,b):
 
 def lcm(a,b):
     if a<0 or b<0: return
-    L = a if a > b else b
+    L = max(a, b)
     while L <= a * b:
         if L%a == 0 and L%b ==0:
             return L
@@ -25,7 +25,7 @@ def lcm(a,b):
 
 def hcf(a,b):
     if a<0 or b<0: return
-    H = a if a<b else b
+    H = min(a, b)
     while H >= 1:
         if a%H == 0 and b%H ==0:
             return H

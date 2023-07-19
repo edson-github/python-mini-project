@@ -11,7 +11,7 @@ class Stack:
 		print(f"Adding {data} to the top of the stack")
 
 		# If there is no data, we add the value in the top element and return
-		if self.top == None:
+		if self.top is None:
 			self.top = Node(data)
 			return
 		new_node = Node(data)
@@ -20,7 +20,7 @@ class Stack:
 
 	def pop(self):
 		# If there is no data in the top node, we return
-		if self.top == None:
+		if self.top is None:
 			print ("There is no item on the stack to unstack")
 			return
 

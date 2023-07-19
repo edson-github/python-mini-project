@@ -73,11 +73,11 @@ while run:
             t = c * h * g - f * e
             x = int(x_offset + 40 * D * (l * h * m - t * n))  # 3D x coordinate after rotation
             y = int(y_offset + 20 * D * (l * h * n + t * m))  # 3D y coordinate after rotation
-            o = int(x + columns * y)  
+            o = int(x + columns * y)
             N = int(8 * ((f * e - c * d * g) * m - c * d * e - f * g - l * d * n))  # luminance index
             if rows > y and y > 0 and x > 0 and columns > x and D > z[o]:
                 z[o] = D
-                b[o] = chars[N if N > 0 else 0]
+                b[o] = chars[max(N, 0)]
 
     if y_start == rows * y_separator - y_separator:
         y_start = 0
@@ -85,16 +85,11 @@ while run:
     for i in range(len(b)):
         A += 0.00004  # for faster rotation change to bigger value
         B += 0.00002  # for faster rotation change to bigger value
-        if i == 0 or i % columns:
-            text_display(b[i], x_start, y_start)
-            x_start += x_separator
-        else:
+        if i != 0 and not i % columns:
             y_start += y_separator
             x_start = 0
-            text_display(b[i], x_start, y_start)
-            x_start += x_separator
-
-
+        text_display(b[i], x_start, y_start)
+        x_start += x_separator
     pygame.display.update()
 
     hue += 0.005

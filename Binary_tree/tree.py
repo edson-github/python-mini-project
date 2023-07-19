@@ -18,22 +18,18 @@ class Tree:
 
     def _add(self, data, node):
         if data < node.data:
-            if node.left is not None:
-                self._add(data, node.left)
-            else:
+            if node.left is None:
                 node.left = Node(data)
-        else:
-            if node.right is not None:
-                self._add(data, node.right)
             else:
-                node.right = Node(data)
+                self._add(data, node.left)
+        elif node.right is not None:
+            self._add(data, node.right)
+        else:
+            node.right = Node(data)
 
     # Method for find the data
     def find(self, data):
-        if self.root is not None:
-            return self._find(data, self.root)
-        else:
-            return None
+        return self._find(data, self.root) if self.root is not None else None
 
     def _find(self, data, node):
         if data == node.data:
@@ -55,6 +51,6 @@ class Tree:
     def _printTree(self, node):
         if node is not None:
             self._printTree(node.left)
-            print(str(node.data) + ' ')
+            print(f'{str(node.data)} ')
             self._printTree(node.right)
 

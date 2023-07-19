@@ -93,7 +93,7 @@ class Product:
             query = 'INSERT INTO product VALUES(NULL, ?, ?)'
             parameters =  (self.name.get(), self.price.get())
             self.run_query(query, parameters)
-            self.message['text'] = 'Product {} added Successfully'.format(self.name.get())
+            self.message['text'] = f'Product {self.name.get()} added Successfully'
             self.name.delete(0, END)
             self.price.delete(0, END)
         else:
@@ -111,7 +111,7 @@ class Product:
         name = self.tree.item(self.tree.selection())['text']
         query = 'DELETE FROM product WHERE name = ?'
         self.run_query(query, (name, ))
-        self.message['text'] = 'Record {} deleted Successfully'.format(name)
+        self.message['text'] = f'Record {name} deleted Successfully'
         self.get_products()
 
     def edit_product(self):
@@ -149,7 +149,7 @@ class Product:
         parameters = (new_name, new_price,name, old_price)
         self.run_query(query, parameters)
         self.edit_wind.destroy()
-        self.message['text'] = 'Record {} updated successfylly'.format(name)
+        self.message['text'] = f'Record {name} updated successfylly'
         self.get_products()
 
 if __name__ == '__main__':
