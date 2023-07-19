@@ -27,7 +27,7 @@ snake_speed = 15  # Speed of snake (Player)
 def score(score):
     # Size and font of score label (Top-Left)
     score_font = pygame.font.SysFont("arial", 15)
-    value = score_font.render(" Score: " + str(score), True, white)
+    value = score_font.render(f" Score: {str(score)}", True, white)
     display.blit(value, [0, 0])
 
 # Render Snake body
@@ -124,9 +124,7 @@ def gameLoop():
         pygame.draw.rect(
             display, red, [foodx, foody, snake_block, snake_block])
 
-        snake_Head = []
-        snake_Head.append(x1)
-        snake_Head.append(y1)
+        snake_Head = [x1, y1]
         snake_List.append(snake_Head)
 
         if len(snake_List) > Length_of_snake:

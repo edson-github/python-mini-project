@@ -18,7 +18,9 @@ def process():
     all = lower + upper + num + special
     ran = random.sample(all,length)
     password = "".join(ran)
-    messagebox.showinfo('Result', 'Your password {} \n\nPassword copied to clipboard'.format(password))
+    messagebox.showinfo(
+        'Result', f'Your password {password} \n\nPassword copied to clipboard'
+    )
     pyperclip.copy(password)
 
 string_pass = StringVar()

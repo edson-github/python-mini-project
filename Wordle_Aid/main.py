@@ -7,7 +7,7 @@ def find_possible_words(guessed, colors_list, answer_words):
 
 
     possible_words = []
-    
+
 
 
 
@@ -15,11 +15,11 @@ def find_possible_words(guessed, colors_list, answer_words):
         listword = list(word)
         #the colons are placeholders so the line marked XYXYXYXY doesn't fail to complete bc theoretical list isn't long enough
         theoretical_list = [':', ':', ':', ':', ';']
-    
+
         for i in range(5):
             if listword[i] == guessed[i]:
                 theoretical_list[i] = ("green")
-                listword[i] = ("." + guessed[i])
+                listword[i] = f".{guessed[i]}"
             elif guessed[i] in listword[i]:
                 theoretical_list[i] = ("green")
                 for j in range(5):
@@ -28,29 +28,21 @@ def find_possible_words(guessed, colors_list, answer_words):
             elif guessed[i] in listword:
                 theoretical_list[i] = ("yellow")
                 mini_index = listword.index(guessed[i])
-                listword[mini_index] = ("." + guessed[i])
+                listword[mini_index] = f".{guessed[i]}"
             else:
                 theoretical_list[i] = ("gray")
-        
+
         print(theoretical_list)
         print(colors_list)
         print(listword)
 
-        
+
         if theoretical_list == colors_list:
             possible_words.append(word)
-                    
-                    
+
+
     return(possible_words)
-
-
-
-
-
-
-    possible_answers = answer_words
-for i in range(6):
-
+for _ in range(6):
     guessed = list(input("Enter guess: "))
     first_letter = input("first letter:  ")
     second_letter = input("second letter:  ")
@@ -58,15 +50,13 @@ for i in range(6):
     fourth_letter = input("fourth letter:  ")
     fifth_letter = input("fifth letter:  ")
 
-    colors_list = []
-    colors_list.append(first_letter)
-    colors_list.append(second_letter)
-    colors_list.append(third_letter)
-    colors_list.append(fourth_letter)
-    colors_list.append(fifth_letter)
-
-
-
+    colors_list = [
+        first_letter,
+        second_letter,
+        third_letter,
+        fourth_letter,
+        fifth_letter,
+    ]
     possible_answers = (find_possible_words(guessed, colors_list, possible_answers))
     print(possible_answers)
     print(len(possible_answers))

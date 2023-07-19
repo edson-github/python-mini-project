@@ -88,8 +88,7 @@ while count != 6:
             print("Invalid response \nComputron Wins!")
             computerPoints += 1
 
-    # DRAW, SAME CHOICES
-    elif player == computer:
+    else:
         print("Draw, Player and Computron gets 1 point")
         playerPoints += 1
         computerPoints += 1

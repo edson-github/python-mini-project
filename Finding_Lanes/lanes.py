@@ -43,8 +43,7 @@ def average_lines_intercept(image, lines):
 def canny(image):
     gray = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
     blur = cv2.GaussianBlur(gray, (5, 5), 0)
-    canny = cv2.Canny(blur, 50, 150)
-    return canny
+    return cv2.Canny(blur, 50, 150)
 
 
 def display_lines(image, lines):
@@ -62,8 +61,7 @@ def roi(image):
     ])
     mask = np.zeros_like(image)
     cv2.fillPoly(mask, polygons, 255)
-    masked_image = cv2.bitwise_and(image, mask)
-    return masked_image
+    return cv2.bitwise_and(image, mask)
 
 
 cap = cv2.VideoCapture("Finding_Lanes/video.mp4")

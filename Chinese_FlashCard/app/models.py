@@ -31,7 +31,7 @@ def create_dictionary(datalist=data_list()) -> dict:
     """ slice every 4 items
     return :: dict with sinograms as key
     """
-    sino_list = datalist[0::4]
+    sino_list = datalist[::4]
     pinyin_list =  datalist[1::4]
     role_list = datalist[2::4]
     def_list =  datalist[3::4]

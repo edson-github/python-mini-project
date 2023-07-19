@@ -54,9 +54,7 @@ def login():
         except Exception as e:
             abort(500, {'message': str(e)})
 
-    if 'user' in session:
-        return redirect("/")
-    return render_template("login.html")
+    return redirect("/") if 'user' in session else render_template("login.html")
 
 '''
 Main dashboard route which has to be protected

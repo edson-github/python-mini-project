@@ -10,9 +10,7 @@ def page(title: str, sentences = 2):
     :return: (str) the summary of the Wikipedia page
     """
 
-    content = wikipedia.summary(title, sentences = sentences)
-
-    return content
+    return wikipedia.summary(title, sentences = sentences)
 
 
 def voicing_text(text):
@@ -43,7 +41,7 @@ def main():
 
     specify_num_of_sentences = input("Do you want to specify the number of sentences (default is 2)? (y/n): ")
 
-    if specify_num_of_sentences == "y" or specify_num_of_sentences == "Y":
+    if specify_num_of_sentences in ["y", "Y"]:
 
         num_of_sentences = input("Enter the number of sentences to include in the summary: ")
 

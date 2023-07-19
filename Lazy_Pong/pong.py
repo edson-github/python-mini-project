@@ -23,8 +23,7 @@ def ball_start():
 
 def player_movement():
 	player.y += player_speed
-	if player.top <= 0:
-		player.top = 0
+	player.top = max(player.top, 0)
 	if player.bottom >= screen_height:
 		player.bottom = screen_height
 
@@ -35,8 +34,7 @@ def opponent_ai():
 	if opponent.bottom > ball.y:
 		opponent.y -= opponent_speed
 
-	if opponent.top <= 0:
-		opponent.top = 0
+	opponent.top = max(opponent.top, 0)
 	if opponent.bottom >= screen_height:
 		opponent.bottom = screen_height
 

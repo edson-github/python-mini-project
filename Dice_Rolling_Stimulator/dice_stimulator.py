@@ -12,39 +12,39 @@ while x == "y":
         print("|         |")
         print("===========")
 
-    if number == 2:
+    elif number == 2:
         print("===========")
         print("|         |")
         print("| O     O |")
         print("|         |")
         print("===========")
 
-    if number == 3:
+    elif number == 3:
         print("===========")
         print("|    O    |")
         print("|    O    |")
         print("|    O    |")
         print("===========")
-        
-    if number == 4:
+
+    elif number == 4:
         print("===========")
         print("| O     O |")
         print("|         |")
         print("| O     O |")
         print("===========")
-        
-    if number == 5:
+
+    elif number == 5:
         print("===========")
         print("| O     O |")
         print("|    O    |")
         print("| O     O |")
         print("===========")
-        
-    if number == 6:
+
+    elif number == 6:
         print("===========")
         print("| O     O |")
         print("| O     O |")
         print("| O     O |")
         print("===========")
-    
+
     x =  input("Press y to roll again ")

@@ -34,7 +34,7 @@ def get_pdf():
         # List to store all the image objects
         imagesJPG = []
 
-        for index, link in enumerate(imgSRC):
+        for link in imgSRC:
             try:
                 # Get image content from the image url
                 im = requests.get(link)
@@ -57,7 +57,7 @@ def get_pdf():
         )
         info_label_2.configure(text=f"File Downloaded to\n{path}")
     else:
-        info_label_2.configure(text=f"Please provide a valid link")
+        info_label_2.configure(text="Please provide a valid link")
 
 
 # Basic Tkinter window setup

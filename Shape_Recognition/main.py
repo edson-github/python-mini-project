@@ -18,14 +18,29 @@ for cnt in CONTOURS:
       x, y, w, h = cv2.boundingRect(cnt)
       ratio = float(w)/h
       if ratio >= 0.9 and ratio <= 1.1:
-         IMAGE = cv2.drawContours(IMAGE, [cnt], -1, (0,255,0), 3)
          SQUARES = SQUARES + 1
       else:
-         IMAGE = cv2.drawContours(IMAGE, [cnt], -1, (0,255,0), 3)
          RECTANGLES = RECTANGLES + 1
 
-cv2.putText(IMAGE, 'Number of SQUARES: ' + str(SQUARES), (h+500, 50), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 2)
-cv2.putText(IMAGE, 'Number of RECTANGLES: ' + str(RECTANGLES), (h+500, 200), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 2)
+      IMAGE = cv2.drawContours(IMAGE, [cnt], -1, (0,255,0), 3)
+cv2.putText(
+    IMAGE,
+    f'Number of SQUARES: {str(SQUARES)}',
+    (h + 500, 50),
+    cv2.FONT_HERSHEY_SIMPLEX,
+    0.6,
+    (0, 255, 0),
+    2,
+)
+cv2.putText(
+    IMAGE,
+    f'Number of RECTANGLES: {str(RECTANGLES)}',
+    (h + 500, 200),
+    cv2.FONT_HERSHEY_SIMPLEX,
+    0.6,
+    (0, 255, 0),
+    2,
+)
 
 cv2.imshow("Shapes", IMAGE)
 cv2.waitKey(0)

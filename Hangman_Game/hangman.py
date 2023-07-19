@@ -5,14 +5,11 @@ def hangman():
     validletter = 'abcdefghijklmnopqrstuvwxyz'
     turns = 10
     guessmade = ''
+    missed = 0
     while len(word) > 0:
         main = ""
-        missed = 0
         for letter in word:
-            if letter in guessmade:
-                main = main + letter
-            else:
-                main = main + "_" + " "
+            main = main + letter if letter in guessmade else f"{main}_ "
         if main == word:
             print(main)
             print("You win!")
@@ -27,57 +24,7 @@ def hangman():
             guess = input()
         if guess not in word:
             turns = turns - 1
-        if turns == 9:
-            print("9 turns left")
-            print("  --------  ")
-        if turns == 8:
-            print("8 turns left")
-            print("  ---------  ")
-            print("      O      ")
-        if turns == 7:
-            print("7 turns left")
-            print("  ---------  ")
-            print("      O      ")
-            print("      |      ")
-        if turns == 6:
-            print("6 turns left")
-            print("  ---------  ")
-            print("      O      ")
-            print("      |      ")
-            print("     /       ")
-        if turns == 5:
-            print("5 turns left")
-            print("  ---------  ")
-            print("      O      ")
-            print("      |      ")
-            print("     / \     ")
-        if turns == 4:
-            print("4 turns left")
-            print("  ---------  ")
-            print("    \ O      ")
-            print("      |      ")
-            print("     / \     ")
-        if turns == 3:
-            print("3 turns left")
-            print("  ---------  ")
-            print("    \ O /    ")
-            print("      |      ")
-            print("     / \     ")
-        if turns == 2:
-            print("2 turns left")
-            print("  ---------  ")
-            print("    \ O /|   ")
-            print("      |      ")
-            print("     / \     ")
-        if turns == 1:
-            print("1 turns left")
-            print("Last breaths counting. Take care!")
-            print("  ---------  ")
-            print("    \ O_|/   ")
-            print("      |      ")
-            print("     / \     ")    
-        
-        if turns == 0:    
+        if turns == 0:
             print("You lose")
             print("You let a kind man die")
             print("  ---------  ")
@@ -85,6 +32,56 @@ def hangman():
             print("     /|\     ")
             print("     / \     ")
             break
+        elif turns == 1:
+            print("1 turns left")
+            print("Last breaths counting. Take care!")
+            print("  ---------  ")
+            print("    \ O_|/   ")
+            print("      |      ")
+            print("     / \     ")    
+
+        elif turns == 2:
+            print("2 turns left")
+            print("  ---------  ")
+            print("    \ O /|   ")
+            print("      |      ")
+            print("     / \     ")
+        elif turns == 3:
+            print("3 turns left")
+            print("  ---------  ")
+            print("    \ O /    ")
+            print("      |      ")
+            print("     / \     ")
+        elif turns == 4:
+            print("4 turns left")
+            print("  ---------  ")
+            print("    \ O      ")
+            print("      |      ")
+            print("     / \     ")
+        elif turns == 5:
+            print("5 turns left")
+            print("  ---------  ")
+            print("      O      ")
+            print("      |      ")
+            print("     / \     ")
+        elif turns == 6:
+            print("6 turns left")
+            print("  ---------  ")
+            print("      O      ")
+            print("      |      ")
+            print("     /       ")
+        elif turns == 7:
+            print("7 turns left")
+            print("  ---------  ")
+            print("      O      ")
+            print("      |      ")
+        elif turns == 8:
+            print("8 turns left")
+            print("  ---------  ")
+            print("      O      ")
+        elif turns == 9:
+            print("9 turns left")
+            print("  --------  ")
 
 name = input("Enter your name: ")
 print(f"Welcome {name}")

@@ -34,8 +34,7 @@ def outside_window():
     top_wall = t.window_height()/2
     bottom_wall = -t.window_height()/2
     (x,y) = caterpillar.pos()
-    outside = x < left_wall or x > right_Wall or y > top_wall or y < bottom_wall
-    return outside
+    return x < left_wall or x > right_Wall or y > top_wall or y < bottom_wall
 
 def game_over():
     caterpillar.color('yellow')

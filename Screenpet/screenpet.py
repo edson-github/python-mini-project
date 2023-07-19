@@ -45,7 +45,7 @@ def cheeky(event):
     return
 
 def show_happy(event):
-    if(20 <= event.x and event.x < 350) and (20 <= event.y and event.y <= 350):
+    if 20 <= event.x < 350 and 20 <= event.y <= 350:
         c.itemconfigure(cheek_left, state = NORMAL)
         c.itemconfigure(cheek_right, state = NORMAL)
         c.itemconfigure(mouth_happy, state = NORMAL)

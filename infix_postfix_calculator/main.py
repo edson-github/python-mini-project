@@ -9,7 +9,7 @@ def parse_infix(input):
                 if not input[i + 1].isdigit() and input[i + 1] != '.':
                     ret += " "
         else:
-            ret += tmp + " "
+            ret += f"{tmp} "
     return ret
 
 
@@ -21,31 +21,23 @@ def convert_to_postfix(infix):
     for token in infix_arr:
         if token == "(":
             s.append(token)
-        elif token == "+":
-            while s and s[-1] in ["+", "-", "*", "/"]:
-                ret += s.pop() + " "
-            s.append(token)
-        elif token == "-":
-            while s and s[-1] in ["+", "-", "*", "/"]:
-                ret += s.pop() + " "
-            s.append(token)
-        elif token == "*":
-            while s and s[-1] in ["*", "/"]:
-                ret += s.pop() + " "
-            s.append(token)
-        elif token == "/":
-            while s and s[-1] in ["*", "/"]:
-                ret += s.pop() + " "
-            s.append(token)
         elif token == ")":
             while s and s[-1] != "(":
-                ret += s.pop() + " "
+                ret += f"{s.pop()} "
             if s and s[-1] == "(":
                 s.pop()
+        elif token in ["*", "/"]:
+            while s and s[-1] in ["*", "/"]:
+                ret += f"{s.pop()} "
+            s.append(token)
+        elif token in ["+", "-"]:
+            while s and s[-1] in ["+", "-", "*", "/"]:
+                ret += f"{s.pop()} "
+            s.append(token)
         else:
-            ret += token + " "
+            ret += f"{token} "
     while s:
-        ret += s.pop() + " "
+        ret += f"{s.pop()} "
     return ret
 
 
@@ -58,18 +50,17 @@ def calculate_postfix(postfix):
         if token in ["+", "-", "*", "/"]:
             b = s.pop()
             a = s.pop()
-            if token == "+":
+            if token == "*":
+                s.append(a * b)
+            elif token == "+":
                 s.append(a + b)
             elif token == "-":
                 s.append(a - b)
-            elif token == "*":
-                s.append(a * b)
             elif token == "/":
                 s.append(a / b)
         else:
             s.append(float(token))
-    ret = str(s.pop())
-    return ret
+    return str(s.pop())
 
 from tkinter import *
 

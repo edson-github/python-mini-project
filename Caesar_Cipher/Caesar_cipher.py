@@ -25,17 +25,15 @@ class main:
         return(output)
 
     def decrypt_string(self, string: str) -> str:
-        output = "" 
+        output = ""
         string = string.lower()
-        string = string.strip()
-        if string == "":
+        if not (string := string.strip()):
             return(self.blank_string)
-        else: 
-            for c in string:
-                for k,v in self.key.items():
-                    if v == c:
-                        output += k
-        
+        for c in string:
+            for k,v in self.key.items():
+                if v == c:
+                    output += k
+
         return(output)
 
 if __name__ == "__main__":
